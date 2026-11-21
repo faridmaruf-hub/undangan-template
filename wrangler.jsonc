@@ -1,0 +1,12 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  // Nama Worker = bagian depan alamat: <name>.mengundang.workers.dev
+  // HARUS sama dengan nama Worker di dashboard Cloudflare.
+  "name": "demo",
+  "compatibility_date": "2026-11-19",
+  "observability": { "enabled": true },
+  "workers_dev": true,
+  "preview_urls": false,
+  // Situs statis hasil build (node build.mjs)
+  "assets": { "directory": "dist" }
+}
