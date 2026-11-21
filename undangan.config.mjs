@@ -32,7 +32,7 @@ export default {
     },
   },
 
-  sampul: { judul: "The Wedding of", foto: "sampul.jpg" },   // foto sampul juga dipakai untuk pratinjau WhatsApp
+  sampul: { judul: "Pernikahan", foto: "sampul.jpg" },   // foto sampul juga dipakai untuk pratinjau WhatsApp
   pratinjau: { judul: "Pernikahan" },                        // judul pratinjau tautan: "Pernikahan Nadia & Raka"
   panelSamping: { foto: "panel-samping.jpg" },               // hanya tampil di layar lebar
   hero: { foto: "hero.jpg" },

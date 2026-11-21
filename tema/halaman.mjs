@@ -87,7 +87,7 @@ export function renderHalaman(c) {
   <!-- ============ SAMPUL ============ -->
   <div id="cover" class="cover"${bg(c.sampul?.foto)}>
     <div class="cover__inner">
-      <p class="eyebrow">${esc(c.sampul?.judul || "The Wedding of")}</p>
+      <p class="eyebrow">${esc(c.sampul?.judul || "Pernikahan")}</p>
       <h1 class="script cover__names">${esc(m1.panggilan)} <span>&amp;</span> ${esc(m2.panggilan)}</h1>
       <p class="cover__date">${esc(tanggalTitik)}</p>
       <div class="cover__guest">
@@ -101,7 +101,7 @@ export function renderHalaman(c) {
 
   <aside class="side"${bg(c.panelSamping?.foto)} aria-hidden="true">
     <div class="side__inner">
-      <p class="eyebrow">${esc(c.sampul?.judul || "The Wedding of")}</p>
+      <p class="eyebrow">${esc(c.sampul?.judul || "Pernikahan")}</p>
       <p class="script side__names">${judul}</p>
       <p class="side__date">${esc(tanggalUtama)}</p>
     </div>
@@ -111,7 +111,7 @@ export function renderHalaman(c) {
 
     <section class="hero"${bg(c.hero?.foto)}>
       <div class="hero__content reveal">
-        <p class="eyebrow">${esc(c.sampul?.judul || "The Wedding of")}</p>
+        <p class="eyebrow">${esc(c.sampul?.judul || "Pernikahan")}</p>
         <h2 class="script hero__names">${judul}</h2>
         <p class="hero__date">${esc(tanggalUtama)}</p>
       </div>

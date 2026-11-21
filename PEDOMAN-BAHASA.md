@@ -13,7 +13,9 @@ Banyak undangan daring menyalin frasa yang sebenarnya janggal. Jangan ikut-ikuta
    ✓ cukup judul *Waktu dan Tempat*, langsung diikuti rincian acara.
 3. **Jaga sudut pandang.** Bila "kami" adalah kedua mempelai, jangan menulis *putra-putri kami*.
    Bila undangan atas nama orang tua, sesuaikan seluruh teks (pembuka, penutup, penanda).
-4. **"&" hanya untuk hiasan** (nama pasangan di sampul). Dalam kalimat dan judul, pakai **dan**.
+4. **Seluruhnya berbahasa Indonesia**, termasuk hiasan dan pratinjau tautan.
+   ✗ *The Wedding of Nadia & Raka*  ✓ *Pernikahan Nadia & Raka*
+5. **"&" hanya untuk hiasan** (nama pasangan di sampul). Dalam kalimat dan judul, pakai **dan**.
 
 ## Ejaan yang sering keliru
 
