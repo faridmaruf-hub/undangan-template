@@ -32,13 +32,16 @@ Ikuti [google-apps-script/PANDUAN.md](google-apps-script/PANDUAN.md). Sheet seba
 Masukkan URL `/exec` ke `rsvp.url`, lalu build dan push lagi.
 
 ## 4. Online-kan di Cloudflare
-1. **Workers & Pages → Create application → Import a repository** → pilih `undangan-andi-sari`.
+1. **Workers & Pages → Create application → Continue with GitHub** → pilih `undangan-andi-sari` → **Next**.
    - Bila repo tidak muncul: *Configure GitHub App* → tambahkan repo tersebut.
-2. Pengaturan build:
-   - **Project/Worker name**: `andi-sari` (harus sama dengan `wrangler.jsonc`)
+2. Di layar *Set up your application*, **gulir ke bawah dan buka *Advanced settings*** (mudah terlewat):
+   - **Project name**: `andi-sari` (harus sama dengan `"name"` di `wrangler.jsonc`; bawaannya nama repo)
    - **Build command**: `node build.mjs`
-   - **Deploy command**: `npx wrangler deploy`
-3. Deploy. Alamat: `https://andi-sari.mengundang.workers.dev`.
+   - **Deploy command**: biarkan `npx wrangler deploy`
+3. **Deploy**. Alamat: `https://andi-sari.mengundang.workers.dev`.
+
+Bila terlanjur deploy tanpa pengaturan di atas (build gagal): **Settings → General → Name** ganti ke nama yang benar,
+**Settings → Builds → Build command** isi `node build.mjs`, lalu **Retry build**.
 
 ## 5. Sebelum dibagikan
 - [ ] Buka di HP sungguhan (Android dan iPhone bila ada): sampul, musik, galeri, RSVP
