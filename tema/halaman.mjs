@@ -72,7 +72,7 @@ export function renderHalaman(c) {
   <meta name="robots" content="noindex">
   <meta name="theme-color" content="#3b3d48">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="${esc(c.sampul?.judul || "The Wedding of")} ${judul}">
+  <meta property="og:title" content="${esc(c.pratinjau?.judul || "Pernikahan")} ${judul}">
   <meta property="og:description" content="${esc(tanggalUtama)} · ${esc([lokasiUtama.tempat, ...(lokasiUtama.alamat || [])].join(", "))}">
   <meta property="og:url" content="${esc(c.url)}/">
   ${c.sampul?.foto ? `<meta property="og:image" content="${esc(c.url)}/${img(c.sampul.foto)}">` : ""}
