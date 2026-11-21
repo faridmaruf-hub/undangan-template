@@ -14,7 +14,7 @@ google-apps-script/   Code.gs + PANDUAN.md (RSVP ke Google Sheets)
 wrangler.jsonc        nama Worker = subdomain: <name>.mengundang.workers.dev; assets = dist
 ```
 - Nama hari dan bulan dihitung dari tanggal (Intl id-ID), jangan ditulis manual.
-- Opsi config penting: `urutan` (wanita-pria/pria-wanita), `tema` ("" perak-sage atau "kuning-banjar"), `pratinjau.foto` (1200×630), `rsvp.url` ("" disembunyikan, "demo", atau URL /exec), `musik`.
+- Opsi config penting: `urutan` (wanita-pria/pria-wanita), `tema` ("" perak-sage atau "kuning-banjar"), `pratinjau.foto` (1200×630), `rsvp.url` ("" disembunyikan, "demo", atau URL /exec), `musik`, `amplop.rekening` (amplop digital; kosong = disembunyikan), `acara[].informasi: true` (acara yang hanya diberitahukan, mis. akad di KUA), `penutup.turutMengundang` (teks atau daftar).
 - Tema warna memakai variabel CSS di `:root` dan diganti lewat `[data-tema="…"]`. Tema baru cukup ditambahkan sebagai blok baru; jangan menulis warna langsung di aturan CSS.
 - Bagian ucapan disembunyikan sampai ada minimal satu ucapan.
 

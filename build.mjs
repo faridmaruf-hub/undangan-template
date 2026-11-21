@@ -21,6 +21,10 @@ need(Array.isArray(config.acara) && config.acara.length > 0, "acara minimal satu
 for (const [i, a] of (config.acara || []).entries()) {
   need(!isNaN(new Date(a.mulai)), `acara[${i}].mulai bukan tanggal yang valid (contoh: "2026-12-06T08:00:00+08:00")`);
 }
+need((config.acara || []).some((a) => !a.informasi), "minimal satu acara harus acara undangan (tanpa informasi: true)");
+for (const [i, r] of (config.amplop?.rekening || []).entries()) {
+  need(r.bank && /\d{6,}/.test(String(r.nomor || "").replace(/\D/g, "")), `amplop.rekening[${i}]: bank dan nomor wajib diisi (nomor minimal 6 angka)`);
+}
 const fotoDipakai = new Set([
   config.sampul?.foto, config.pratinjau?.foto, config.hero?.foto, config.hitungMundur?.foto, config.penutup?.foto,
   config.panelSamping?.foto, config.mempelai?.wanita?.foto, config.mempelai?.pria?.foto,

@@ -34,6 +34,22 @@ export function teksWaktu(acara, zona, labelZona) {
   return `Pukul ${mulai} ${labelZona} sampai selesai`;
 }
 
+// Acara yang hanya diberitahukan (informasi: true), mis. akad nikah terbatas: tamu tidak diundang hadir.
+export const acaraUndangan = (c) => c.acara.filter((a) => !a.informasi);
+export const acaraInformasi = (c) => c.acara.filter((a) => a.informasi);
+
+// "Akad nikah kami dilangsungkan pada Sabtu, 12 Juni 2027, di KUA Kecamatan Contoh, Kota Contoh."
+// Dapat diganti utuh lewat acara[].teksInformasi. tebal(s) membungkus bagian penting (<strong> di halaman, *…* di WhatsApp).
+export function kalimatInformasi(a, zona, tebal = (s) => s) {
+  if (a.teksInformasi) return a.teksInformasi;
+  const nama = a.nama.charAt(0).toUpperCase() + a.nama.slice(1).toLowerCase();
+  const tempat = [a.tempat, ...(a.alamat || [])].join(", ");
+  return `${nama} kami dilangsungkan pada ${tebal(tanggalLengkap(a.mulai, zona))}, di ${tebal(tempat)}.`;
+}
+
+// "000011112222" → "0000 1111 2222" (mudah dibaca; yang disalin tetap angka tanpa spasi)
+export const nomorRapi = (n) => String(n).replace(/\D/g, "").replace(/(\d{4})(?=\d)/g, "$1 ");
+
 const utc = (d) => d.toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "");
 
 export function tautanKalender(acara, judul, durasiJamBawaan = 4) {

@@ -1,4 +1,4 @@
-import { esc, infoTanggal, tanggalLengkap, teksWaktu, tautanKalender } from "./format.mjs";
+import { esc, infoTanggal, tanggalLengkap, teksWaktu, tautanKalender, acaraUndangan, kalimatInformasi, nomorRapi } from "./format.mjs";
 
 const IKON = {
   surat: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7l9 6 9-6M4 5h16a1 1 0 011 1v12a1 1 0 01-1 1H4a1 1 0 01-1-1V6a1 1 0 011-1z" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>',
@@ -45,15 +45,38 @@ function kartuAcara(a, c, judul) {
       </article>`;
 }
 
+// Acara yang hanya diberitahukan (informasi: true): tanpa jam, tombol lokasi, dan kalender.
+function kartuInformasi(a, c) {
+  return `
+      <article class="event event--info reveal">
+        <h3 class="event__title">${esc(a.nama)}</h3>
+        <p class="event__note">${kalimatInformasi(
+          { ...a, nama: esc(a.nama), tempat: esc(a.tempat), alamat: (a.alamat || []).map(esc), teksInformasi: a.teksInformasi && esc(a.teksInformasi) },
+          c.zonaWaktu, (t) => `<strong>${t}</strong>`)}</p>
+      </article>`;
+}
+
+function kartuRekening(r) {
+  const nomor = String(r.nomor).replace(/\D/g, "");
+  return `
+        <div class="gift reveal">
+          <p class="gift__bank">${esc(r.bank)}</p>
+          <p class="gift__num">${esc(nomorRapi(nomor))}</p>
+          ${r.atasNama ? `<p class="gift__name">a.n. ${esc(r.atasNama)}</p>` : ""}
+          <button class="btn btn--ghost gift__copy" type="button" data-salin="${esc(nomor)}">Salin Nomor</button>
+        </div>`;
+}
+
 export function renderHalaman(c) {
   const pasangan = namaPasangan(c);
   const [m1, m2] = urutanMempelai(c);
   const judul = `${esc(m1.panggilan)} &amp; ${esc(m2.panggilan)}`;
-  const target = c.hitungMundur?.target || c.acara[c.acara.length - 1].mulai;
+  const diundang = acaraUndangan(c).length ? acaraUndangan(c) : c.acara;
+  const target = c.hitungMundur?.target || diundang[diundang.length - 1].mulai;
   const tUtama = infoTanggal(target, c.zonaWaktu);
   const tanggalTitik = `${tUtama.tanggal} · ${String(new Date(target).toLocaleString("en-US", { timeZone: c.zonaWaktu, month: "2-digit" }))} · ${tUtama.tahun}`;
   const tanggalUtama = `${tanggalLengkap(target, c.zonaWaktu)}`;
-  const lokasiUtama = c.acara[c.acara.length - 1];
+  const lokasiUtama = diundang[diundang.length - 1];
   const runtime = {
     target,
     rsvpUrl: c.rsvp?.url || "",
@@ -61,6 +84,8 @@ export function renderHalaman(c) {
   };
   const p = c.penutup || {};
   const kredit = c.kredit;
+  const amplop = c.amplop?.rekening?.length ? c.amplop : null;
+  const turut = [].concat(p.turutMengundang || []);
 
   return `<!doctype html>
 <html lang="id">
@@ -160,7 +185,7 @@ export function renderHalaman(c) {
     <!-- ============ ACARA ============ -->
     <section class="section section--soft center">
       <h2 class="title reveal">Waktu dan Tempat</h2>
-      ${c.acara.map((a) => kartuAcara(a, c, pasangan)).join("")}
+      ${c.acara.map((a) => (a.informasi ? kartuInformasi(a, c) : kartuAcara(a, c, pasangan))).join("")}
     </section>
 
     ${c.galeri?.length ? `
@@ -201,13 +226,22 @@ export function renderHalaman(c) {
       </div>
     </section>
 
+    ${amplop ? `
+    <!-- ============ AMPLOP DIGITAL ============ -->
+    <section class="section center">
+      <h2 class="title reveal">${esc(amplop.judul || "Tanda Kasih")}</h2>
+      <p class="lead reveal">${esc(amplop.teks || "Kehadiran dan doa restu Bapak/Ibu/Saudara/i sudah lebih dari cukup bagi kami. Apabila Bapak/Ibu/Saudara/i ingin mengirimkan tanda kasih, kami menyediakan amplop digital berikut.")}</p>
+      <div class="gifts">${amplop.rekening.map(kartuRekening).join("")}
+      </div>
+    </section>` : ""}
+
     <!-- ============ PENUTUP ============ -->
     <section class="closing"${bg(p.foto)}>
       <div class="closing__content reveal">
         ${p.teks ? `<p class="lead">${esc(p.teks)}</p>` : ""}
         ${p.salam ? `<p class="salam">${esc(p.salam)}</p>` : ""}
-        ${p.turutMengundang ? `<p class="closing__label">Turut Mengundang</p>
-        <p class="closing__text">${esc(p.turutMengundang)}</p>` : ""}
+        ${turut.length ? `<p class="closing__label">Turut Mengundang</p>
+        <p class="closing__text">${turut.map(esc).join("<br>")}</p>` : ""}
         <p class="closing__label">${esc(p.penanda || "Kami yang berbahagia")}</p>
         <p class="script closing__names">${judul}</p>
         ${p.keterangan ? `<p class="closing__text">${esc(p.keterangan)}</p>` : ""}

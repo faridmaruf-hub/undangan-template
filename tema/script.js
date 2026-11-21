@@ -210,4 +210,25 @@
     if (Math.abs(dx) > 50) show(dx < 0 ? idx + 1 : idx - 1);
     startX = null;
   });
+
+  // ---- Amplop digital: salin nomor rekening atau e-wallet ----
+  document.querySelectorAll("[data-salin]").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var teks = btn.getAttribute("data-salin");
+      var asli = btn.dataset.label || (btn.dataset.label = btn.textContent);
+      var selesai = function () {
+        btn.textContent = "Nomor tersalin ✓";
+        setTimeout(function () { btn.textContent = asli; }, 1800);
+      };
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(teks).then(selesai, function () { btn.textContent = teks; });
+      } else {
+        var ta = document.createElement("textarea");
+        ta.value = teks; ta.setAttribute("readonly", ""); ta.style.position = "fixed"; ta.style.opacity = "0";
+        document.body.appendChild(ta); ta.select();
+        try { document.execCommand("copy"); selesai(); } catch (e) { btn.textContent = teks; }
+        document.body.removeChild(ta);
+      }
+    });
+  });
 })();

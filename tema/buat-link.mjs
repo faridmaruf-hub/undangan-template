@@ -1,12 +1,13 @@
-import { esc, tanggalLengkap, teksWaktu } from "./format.mjs";
+import { esc, tanggalLengkap, teksWaktu, acaraUndangan, acaraInformasi, kalimatInformasi } from "./format.mjs";
 import { namaPasangan } from "./halaman.mjs";
 
 // Pesan WhatsApp bawaan, disusun dari data acara (tanggal & hari dihitung otomatis).
 export function pesanBawaan(c) {
   const p = c.pesanWhatsApp || {};
-  const tempatSama = c.acara.every((a) => a.tempat === c.acara[0].tempat && (a.alamat || []).join() === (c.acara[0].alamat || []).join());
+  const acara = acaraUndangan(c);
+  const tempatSama = acara.every((a) => a.tempat === acara[0].tempat && (a.alamat || []).join() === (acara[0].alamat || []).join());
   const tempatTeks = (a) => [a.tempat, ...(a.alamat || [])].join(", ");
-  const blokAcara = c.acara.map((a) => [
+  const blokAcara = acara.map((a) => [
     `*${a.nama}*`,
     tanggalLengkap(a.mulai, c.zonaWaktu),
     teksWaktu(a, c.zonaWaktu, c.labelZonaWaktu),
@@ -18,7 +19,8 @@ export function pesanBawaan(c) {
     "Yth. {nama}",
     p.pembuka || "Dengan hormat, kami bermaksud mengundang Bapak/Ibu/Saudara/i untuk menghadiri acara pernikahan kami:",
     blokAcara,
-    tempatSama ? `Tempat: ${tempatTeks(c.acara[0])}` : null,
+    tempatSama ? `Tempat: ${tempatTeks(acara[0])}` : null,
+    acaraInformasi(c).map((a) => kalimatInformasi(a, c.zonaWaktu)).join("\n") || null,
     "Informasi lengkap dan konfirmasi kehadiran dapat dilihat melalui tautan berikut:\n{tautan}",
     p.penutup || "Kami akan merasa terhormat apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu.",
     c.penutup?.salam,

@@ -52,6 +52,9 @@ export default {
     teks: "Dengan memohon rahmat dan rida Allah Swt., kami bermaksud melangsungkan pernikahan:",
   },
 
+  // informasi: true = acara hanya diberitahukan, tamu tidak diundang hadir (mis. akad nikah terbatas di KUA).
+  //   Tampil sebagai kalimat "Akad nikah kami dilangsungkan pada …, di …" tanpa jam, tombol lokasi, dan kalender,
+  //   dan tidak dimasukkan ke daftar acara di pesan WhatsApp. Kalimatnya bisa diganti lewat teksInformasi: "…".
   acara: [
     {
       nama: "Akad Nikah",
@@ -91,9 +94,17 @@ export default {
     foto: "penutup.jpg",
     teks: "Kami akan merasa terhormat dan berbahagia apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu.",
     salam: "Wassalamu’alaikum Warahmatullahi Wabarakatuh",
-    turutMengundang: "Keluarga Besar Kedua Mempelai",
+    turutMengundang: "Keluarga Besar Kedua Mempelai", // atau daftar: ["Bapak A dan Ibu B", "Keluarga Besar C"]
     penanda: "Kami yang berbahagia",
     keterangan: "beserta keluarga besar",
+  },
+
+  // Amplop digital (opsional). Hapus blok atau kosongkan rekening: [] agar bagian ini tidak tampil.
+  // Nomor ditampilkan per 4 angka; tombol "Salin Nomor" menyalin angkanya saja. judul/teks boleh diganti.
+  amplop: {
+    rekening: [
+      // { bank: "DANA", nomor: "08xxxxxxxxxx", atasNama: "Nama Pemilik" },
+    ],
   },
 
   musik: "musik.mp3",                            // di folder konten/; null = tanpa musik. Pastikan berlisensi.
