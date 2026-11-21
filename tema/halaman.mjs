@@ -75,7 +75,13 @@ export function renderHalaman(c) {
   <meta property="og:title" content="${esc(c.pratinjau?.judul || "Pernikahan")} ${judul}">
   <meta property="og:description" content="${esc(tanggalUtama)} · ${esc([lokasiUtama.tempat, ...(lokasiUtama.alamat || [])].join(", "))}">
   <meta property="og:url" content="${esc(c.url)}/">
-  ${c.sampul?.foto ? `<meta property="og:image" content="${esc(c.url)}/${img(c.sampul.foto)}">` : ""}
+  ${c.sampul?.foto ? `<meta property="og:image" content="${esc(c.url)}/${img(c.sampul.foto)}">
+  <meta property="og:image:secure_url" content="${esc(c.url)}/${img(c.sampul.foto)}">
+  <meta property="og:image:type" content="${/\.png$/i.test(c.sampul.foto) ? "image/png" : "image/jpeg"}">
+  ${c._ukuranSampul ? `<meta property="og:image:width" content="${c._ukuranSampul.lebar}">
+  <meta property="og:image:height" content="${c._ukuranSampul.tinggi}">` : ""}
+  <meta property="og:image:alt" content="${esc(c.sampul?.judul || "Pernikahan")} ${judul}">
+  <meta name="twitter:card" content="summary_large_image">` : ""}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Great+Vibes&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">

@@ -34,6 +34,24 @@ if (errors.length) {
   process.exit(1);
 }
 
+// ---- Ukuran foto sampul untuk pratinjau tautan (og:image:width/height) ----
+function ukuranJpeg(buf) {
+  // Cari penanda SOF (0xFFC0–0xFFCF kecuali C4/C8/CC) yang memuat tinggi & lebar.
+  let i = 2;
+  while (i < buf.length) {
+    if (buf[i] !== 0xff) { i++; continue; }
+    const m = buf[i + 1];
+    if (m >= 0xc0 && m <= 0xcf && ![0xc4, 0xc8, 0xcc].includes(m)) {
+      return { tinggi: buf.readUInt16BE(i + 5), lebar: buf.readUInt16BE(i + 7) };
+    }
+    i += 2 + buf.readUInt16BE(i + 2);
+  }
+  return null;
+}
+if (config.sampul?.foto && /\.jpe?g$/i.test(config.sampul.foto)) {
+  config._ukuranSampul = ukuranJpeg(await readFile(join(ROOT, "konten/foto", config.sampul.foto)));
+}
+
 // ---- Tulis dist/ ----
 await rm(DIST, { recursive: true, force: true });
 await mkdir(join(DIST, "assets/img"), { recursive: true });
