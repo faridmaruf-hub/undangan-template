@@ -34,7 +34,7 @@ export default {
   },
 
   sampul: { judul: "Pernikahan", foto: "sampul.jpg" },   // foto sampul juga dipakai untuk pratinjau WhatsApp
-  pratinjau: { judul: "Pernikahan" },                        // judul pratinjau tautan: "Pernikahan Nadia & Raka"
+  pratinjau: { judul: "Pernikahan", foto: "pratinjau.jpg" },   // pratinjau tautan WhatsApp; foto mendatar 1200x630 (lihat alat/siapkan-pratinjau.py)
   panelSamping: { foto: "panel-samping.jpg" },               // hanya tampil di layar lebar
   hero: { foto: "hero.jpg" },
   hitungMundur: { foto: "hitung-mundur.jpg" },               // target: acara terakhir (atau isi target: "...")

@@ -22,7 +22,7 @@ for (const [i, a] of (config.acara || []).entries()) {
   need(!isNaN(new Date(a.mulai)), `acara[${i}].mulai bukan tanggal yang valid (contoh: "2026-12-06T08:00:00+08:00")`);
 }
 const fotoDipakai = new Set([
-  config.sampul?.foto, config.hero?.foto, config.hitungMundur?.foto, config.penutup?.foto,
+  config.sampul?.foto, config.pratinjau?.foto, config.hero?.foto, config.hitungMundur?.foto, config.penutup?.foto,
   config.panelSamping?.foto, config.mempelai?.wanita?.foto, config.mempelai?.pria?.foto,
   ...(config.galeri || []).map((g) => g.foto),
 ].filter(Boolean));
@@ -48,8 +48,10 @@ function ukuranJpeg(buf) {
   }
   return null;
 }
-if (config.sampul?.foto && /\.jpe?g$/i.test(config.sampul.foto)) {
-  config._ukuranSampul = ukuranJpeg(await readFile(join(ROOT, "konten/foto", config.sampul.foto)));
+// Gambar pratinjau: pratinjau.foto (disarankan 1200x630) atau, bila kosong, foto sampul.
+config._fotoPratinjau = config.pratinjau?.foto || config.sampul?.foto;
+if (config._fotoPratinjau && /\.jpe?g$/i.test(config._fotoPratinjau)) {
+  config._ukuranSampul = ukuranJpeg(await readFile(join(ROOT, "konten/foto", config._fotoPratinjau)));
 }
 
 // ---- Tulis dist/ ----

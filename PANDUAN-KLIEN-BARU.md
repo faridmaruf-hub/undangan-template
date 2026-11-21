@@ -16,6 +16,10 @@ Lalu clone ke komputer.
    ```
    Hapus foto contoh (`sampul.jpg`, `galeri-01.jpg`, dst.) yang tidak dipakai.
    Foto profil mempelai: potong persegi, wajah di tengah (±600×600 px).
+   **Gambar pratinjau WhatsApp** (mendatar 1200×630, wajah terlihat):
+   ```bash
+   python alat/siapkan-pratinjau.py "C:/folder/foto-asli/foto.jpg" konten/foto/pratinjau.jpg 0.06
+   ```
 2. **Musik** (opsional): `konten/musik.mp3`, lalu isi `musik: "musik.mp3"`. Pastikan berlisensi.
 3. **`undangan.config.mjs`**: isi semua bagian. Yang paling sering terlewat:
    - `slug` dan `url` (sama dengan nama Worker)
