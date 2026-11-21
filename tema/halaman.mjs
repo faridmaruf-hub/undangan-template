@@ -188,9 +188,10 @@ export function renderHalaman(c) {
         <button class="btn btn--dark rsvp__submit" type="submit">Kirim</button>
         <p class="rsvp__status" role="status" aria-live="polite"></p>
       </form>
-      <div class="wishes reveal">
+      <!-- Disembunyikan sampai ada minimal satu ucapan yang tampil -->
+      <div id="wishes" class="wishes" hidden>
         <h3 class="wishes__title">Ucapan dan Doa <span id="wishCount"></span></h3>
-        <ul id="wishList" class="wishes__list"><li class="wishes__empty">Memuat ucapan…</li></ul>
+        <ul id="wishList" class="wishes__list"></ul>
       </div>
     </section>
 

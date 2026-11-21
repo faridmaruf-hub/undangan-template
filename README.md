@@ -39,6 +39,28 @@ Alamat klien: `<nama-pasangan>.mengundang.workers.dev`.
 
 Lihat [PANDUAN-KLIEN-BARU.md](PANDUAN-KLIEN-BARU.md).
 
+## Kredit
+
+Musik demo: *Velvet Breath of the Saxophone* — Farid Ma'ruf.
+
+Foto demo dari [Unsplash](https://unsplash.com) ([Unsplash License](https://unsplash.com/license)), terima kasih kepada para fotografernya:
+
+| Berkas | Fotografer | Sumber |
+|---|---|---|
+| sampul, galeri-01 | Jonathan Borba | [__vggaw2Nzk](https://unsplash.com/photos/__vggaw2Nzk) |
+| hero, galeri-05 | Mesa Photo | [V8JBij7CvUE](https://unsplash.com/photos/V8JBij7CvUE) |
+| hitung-mundur | Wedding Photography | [Qn5QFRNXJIs](https://unsplash.com/photos/Qn5QFRNXJIs) |
+| penutup | Catherine Kay Greenup | [gJJzYZDRieM](https://unsplash.com/photos/gJJzYZDRieM) |
+| panel-samping, galeri-07 | Stacey Vandas | [8HX_r68ZM58](https://unsplash.com/photos/8HX_r68ZM58) |
+| mempelai-wanita | Bob Oh | [iJY-h1wEMK4](https://unsplash.com/photos/iJY-h1wEMK4) |
+| mempelai-pria | Klara Kulikova | [sj3gSYe5OXE](https://unsplash.com/photos/sj3gSYe5OXE) |
+| galeri-02 | SASI | [iCQKDhQKbcE](https://unsplash.com/photos/iCQKDhQKbcE) |
+| galeri-03 | Annie Spratt | [V9l3wtOVk4c](https://unsplash.com/photos/V9l3wtOVk4c) |
+| galeri-04 | Shelby Deeter | [-XlBjdtRqK8](https://unsplash.com/photos/-XlBjdtRqK8) |
+| galeri-06 | Oscar Helgstrand | [PwCNGxJd8hs](https://unsplash.com/photos/PwCNGxJd8hs) |
+
+Untuk klien sungguhan, foto-foto ini diganti dengan foto prewedding klien.
+
 ## Hak cipta
 
-© Farid Ma'ruf. Kode ini dipublikasikan sebagai portfolio. Foto pada demo adalah gambar pengganti (placeholder).
+© Farid Ma'ruf. Kode ini dipublikasikan sebagai portfolio; foto dan musik demo mengikuti lisensi masing-masing.

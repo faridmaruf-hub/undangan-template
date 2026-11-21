@@ -94,7 +94,8 @@ export default {
     keterangan: "beserta keluarga besar",
   },
 
-  musik: null,                                   // mis. "musik.mp3" di folder konten/ (pastikan berlisensi)
+  musik: "musik.mp3",                            // di folder konten/; null = tanpa musik. Pastikan berlisensi.
+                                                 // Demo: "Velvet Breath of the Saxophone" — Farid Ma'ruf
 
   pesanWhatsApp: {
     pembuka: "Dengan memohon rahmat dan rida Allah Swt., kami bermaksud mengundang Bapak/Ibu/Saudara/i untuk menghadiri acara pernikahan kami:",

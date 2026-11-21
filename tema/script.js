@@ -112,16 +112,13 @@
       return new Date(iso).toLocaleDateString("id-ID", { day: "numeric", month: "long", year: "numeric" });
     };
 
+    var wishesBox = document.getElementById("wishes");
     var renderWishes = function (items) {
       wishList.textContent = "";
       wishCount.textContent = items.length ? "(" + items.length + ")" : "";
-      if (!items.length) {
-        var empty = document.createElement("li");
-        empty.className = "wishes__empty";
-        empty.textContent = "Belum ada ucapan. Jadilah yang pertama!";
-        wishList.appendChild(empty);
-        return;
-      }
+      // Belum ada ucapan → bagian ini tidak ditampilkan sama sekali
+      wishesBox.hidden = !items.length;
+      if (!items.length) return;
       items.forEach(function (w) {
         var li = document.createElement("li");
         var head = document.createElement("div"); head.className = "wish__head";
@@ -140,7 +137,7 @@
       fetch(RSVP_URL)
         .then(function (r) { return r.json(); })
         .then(function (d) { renderWishes(d.ok ? d.items : []); })
-        .catch(function () { wishList.innerHTML = '<li class="wishes__empty">Ucapan belum dapat dimuat.</li>'; });
+        .catch(function () { wishesBox.hidden = true; }); // gagal memuat: sembunyikan, jangan tampilkan pesan galat
     };
     loadWishes();
 
