@@ -46,7 +46,7 @@ export function renderBuatLink(c) {
   <link rel="stylesheet" href="assets/style.css">
   <script id="buat-link-config" type="application/json">${JSON.stringify(data).replace(/</g, "\\u003c")}</script>
 </head>
-<body class="tool">
+<body class="tool"${c.tema ? ` data-tema="${esc(c.tema)}"` : ""}>
   <main class="tool__main">
     <h1 class="title">Buat Tautan Tamu</h1>
     <p class="lead">Undangan ${esc(namaPasangan(c))} · <a href="${esc(c.url)}/" target="_blank" rel="noopener">${esc(c.url.replace(/^https:\/\//, ""))}</a></p>

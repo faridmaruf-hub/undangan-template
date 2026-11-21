@@ -9,6 +9,7 @@ export default {
   zonaWaktu: "Asia/Jakarta",                     // Asia/Jakarta (WIB), Asia/Makassar (WITA), Asia/Jayapura (WIT)
   labelZonaWaktu: "WIB",
   kodeNegara: "62",                              // untuk nomor WhatsApp di alat buat-link
+  tema: "",                                      // "" = perak-sage (bawaan), "kuning-banjar" = emas antik
 
   mempelai: {
     urutan: "wanita-pria",                       // atau "pria-wanita"

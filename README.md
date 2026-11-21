@@ -13,6 +13,7 @@ Situs statis yang ringan, dirancang untuk dibuka di HP lewat tautan WhatsApp.
 - **RSVP dan ucapan** tersimpan di Google Sheets milik klien (Google Apps Script, tanpa server sendiri), dengan kolom untuk menyembunyikan ucapan
 - **Musik latar** (opsional), berhenti otomatis saat aplikasi ditinggalkan
 - **Alat buat tautan tamu**: tempel daftar nama (dan nomor WhatsApp), langsung jadi tautan dan pesan undangan siap kirim, plus ekspor CSV. Semua diproses di browser.
+- **Tema warna**: perak-sage (bawaan) atau *kuning-banjar* (emas antik, terinspirasi kuning kebesaran Kesultanan Banjar)
 - **Pratinjau WhatsApp** (Open Graph) dan `noindex` agar tidak muncul di mesin pencari
 - **Teks berbahasa Indonesia yang baik dan benar**: lihat [PEDOMAN-BAHASA.md](PEDOMAN-BAHASA.md)
 

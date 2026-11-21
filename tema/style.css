@@ -7,6 +7,13 @@
   --ivory: #f7f6f2;
   --paper: #ffffff;
   --accent: #8a93a6;
+  --ink-rgb: 59,61,72;     /* --ink dalam bentuk r,g,b untuk bayangan */
+  --ink-hover: #2c2e37;
+  --heading: var(--ink);   /* warna judul & nama berhuruf sambung di latar terang */
+  --soft-end: #eef1ef;     /* ujung gradasi section lembut */
+  --line: var(--line);         /* garis tepi kartu */
+  --line-strong: var(--line-strong);  /* garis tepi kolom isian */
+  --overlay: 30,31,40;     /* lapisan gelap di atas foto (r,g,b) */
   --col: 480px;
   --serif: "Cormorant Garamond", Georgia, serif;
   --sans: "Jost", system-ui, sans-serif;
@@ -46,7 +53,7 @@ a { color: inherit; }
 .btn--light { background: rgba(255,255,255,.92); color: var(--ink); }
 .btn--light:hover { background: #fff; }
 .btn--dark { background: var(--ink); color: #fff; }
-.btn--dark:hover { background: #2c2e37; }
+.btn--dark:hover { background: var(--ink-hover); }
 .btn--ghost { border-color: var(--ink); color: var(--ink); background: transparent; }
 .btn--ghost:hover { background: var(--ink); color: #fff; }
 
@@ -56,7 +63,7 @@ a { color: inherit; }
 }
 .cover::before, .hero::before, .countdown-wrap::before, .closing::before, .side::before {
   content: ""; position: absolute; inset: 0;
-  background: linear-gradient(180deg, rgba(40,42,52,.15) 0%, rgba(40,42,52,.35) 45%, rgba(30,31,40,.85) 100%);
+  background: linear-gradient(180deg, rgba(var(--overlay),.15) 0%, rgba(var(--overlay),.35) 45%, rgba(var(--overlay),.85) 100%);
 }
 .cover > *, .hero > *, .countdown-wrap > *, .closing > *, .side > * { position: relative; }
 
@@ -114,8 +121,8 @@ a { color: inherit; }
 
 /* ===== Section umum ===== */
 .section { padding: 4.5rem 1.75rem; }
-.section--soft { background: linear-gradient(180deg, var(--ivory), #eef1ef); }
-.title { font-family: var(--serif); font-weight: 500; font-size: 2.3rem; letter-spacing: .03em; margin-bottom: .3rem; }
+.section--soft { background: linear-gradient(180deg, var(--ivory), var(--soft-end)); }
+.title { color: var(--heading); font-family: var(--serif); font-weight: 500; font-size: 2.3rem; letter-spacing: .03em; margin-bottom: .3rem; }
 .lead { font-size: .95rem; color: var(--ink-soft); max-width: 30rem; margin: 0 auto 2rem; }
 .salam { font-family: var(--serif); font-style: italic; font-size: 1.25rem; margin-bottom: 1rem; }
 
@@ -141,12 +148,12 @@ a { color: inherit; }
   content: ""; position: absolute; inset: -10px; border-radius: 50%; border: 1px dashed var(--sage);
 }
 .couple__photo img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
-.couple__name { font-size: 2.7rem; margin-bottom: .6rem; }
+.couple__name { color: var(--heading); font-size: 2.7rem; margin-bottom: .6rem; }
 .couple__parents { font-size: .92rem; color: var(--ink-soft); margin-bottom: .9rem; }
 .couple__parents strong { color: var(--ink); font-weight: 500; }
 .ig {
   display: inline-flex; align-items: center; gap: .4rem; font-size: .82rem; text-decoration: none;
-  padding: .4rem 1rem; border-radius: 999px; background: var(--ivory); border: 1px solid #e4e5ea;
+  padding: .4rem 1rem; border-radius: 999px; background: var(--ivory); border: 1px solid var(--line);
 }
 .ig svg { width: 16px; height: 16px; }
 .amp { font-size: 4rem; color: var(--accent); margin: 1.8rem 0; }
@@ -167,9 +174,9 @@ a { color: inherit; }
 /* ===== Acara ===== */
 .event {
   background: var(--paper); border-radius: 200px 200px 18px 18px; padding: 3rem 1.5rem 2rem;
-  margin: 0 auto 1.8rem; border: 1px solid #e4e6ea; box-shadow: 0 12px 30px rgba(59,61,72,.07);
+  margin: 0 auto 1.8rem; border: 1px solid var(--line); box-shadow: 0 12px 30px rgba(var(--ink-rgb),.07);
 }
-.event__title { font-family: var(--script); font-weight: 400; font-size: 2.8rem; margin-bottom: 1rem; }
+.event__title { color: var(--heading); font-family: var(--script); font-weight: 400; font-size: 2.8rem; margin-bottom: 1rem; }
 .event__date {
   display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: .9rem; margin: 0 auto 1rem; max-width: 300px;
 }
@@ -198,7 +205,7 @@ a { color: inherit; }
   min-height: 100vh; min-height: 100svh; color: #fff; text-align: center;
   display: flex; align-items: flex-end; padding: 3rem 1.75rem 4rem; background-position: center 20%;
 }
-.closing::before { background: linear-gradient(180deg, rgba(30,31,40,.1) 0%, rgba(30,31,40,.55) 40%, rgba(30,31,40,.92) 100%); }
+.closing::before { background: linear-gradient(180deg, rgba(var(--overlay),.1) 0%, rgba(var(--overlay),.55) 40%, rgba(var(--overlay),.92) 100%); }
 .closing .lead { color: rgba(255,255,255,.88); margin-bottom: 1.4rem; }
 .closing__label { font-size: .75rem; letter-spacing: .3em; text-transform: uppercase; opacity: .8; margin-top: 1.4rem; }
 .closing__text { font-family: var(--serif); font-size: 1.2rem; }
@@ -248,15 +255,15 @@ a { color: inherit; }
 
 /* ===== RSVP & Ucapan ===== */
 .rsvp {
-  text-align: left; background: var(--paper); border: 1px solid #e4e6ea; border-radius: 18px;
-  padding: 1.6rem 1.3rem; box-shadow: 0 12px 30px rgba(59,61,72,.07); margin-bottom: 2rem;
+  text-align: left; background: var(--paper); border: 1px solid var(--line); border-radius: 18px;
+  padding: 1.6rem 1.3rem; box-shadow: 0 12px 30px rgba(var(--ink-rgb),.07); margin-bottom: 2rem;
 }
 .field { display: block; border: 0; margin-bottom: 1.1rem; }
 .field[hidden] { display: none; }
 .field > span, .field legend { display: block; font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; font-weight: 500; margin-bottom: .4rem; }
 .field input[type=text], .field select, .field textarea {
   width: 100%; font: 400 .95rem/1.5 var(--sans); color: var(--ink);
-  padding: .7rem .85rem; border: 1px solid #d9dbe1; border-radius: 10px; background: var(--ivory);
+  padding: .7rem .85rem; border: 1px solid var(--line-strong); border-radius: 10px; background: var(--ivory);
 }
 .field textarea { resize: vertical; }
 .field input:focus, .field select:focus, .field textarea:focus { outline: 2px solid var(--accent); outline-offset: 1px; border-color: transparent; }
@@ -265,7 +272,7 @@ a { color: inherit; }
 .choice input { position: absolute; opacity: 0; inset: 0; }
 .choice span {
   display: block; text-align: center; font-size: .85rem; padding: .6rem .3rem; border-radius: 10px;
-  border: 1px solid #d9dbe1; background: var(--ivory); cursor: pointer; transition: all .2s;
+  border: 1px solid var(--line-strong); background: var(--ivory); cursor: pointer; transition: all .2s;
 }
 .choice input:checked + span { background: var(--ink); color: #fff; border-color: var(--ink); }
 .choice input:focus-visible + span { outline: 2px solid var(--accent); outline-offset: 2px; }
@@ -278,7 +285,7 @@ a { color: inherit; }
 .wishes__title { font-family: var(--serif); font-weight: 500; font-size: 1.5rem; text-align: center; margin-bottom: 1rem; }
 .wishes__title span { font-size: 1rem; color: var(--ink-soft); }
 .wishes__list { list-style: none; max-height: 460px; overflow-y: auto; padding-right: .3rem; }
-.wishes__list li { background: var(--paper); border-radius: 14px; padding: .9rem 1rem; margin-bottom: .6rem; border: 1px solid #e8e9ed; }
+.wishes__list li { background: var(--paper); border-radius: 14px; padding: .9rem 1rem; margin-bottom: .6rem; border: 1px solid var(--line); }
 .wishes__list p { font-size: .92rem; margin: .25rem 0; white-space: pre-line; word-wrap: break-word; }
 .wishes__list small { font-size: .72rem; color: var(--ink-soft); }
 .wish__head { display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; }
@@ -292,20 +299,51 @@ body.tool { background: var(--ivory); }
 .tool__main .title { text-align: center; }
 .tool__main .lead { text-align: center; margin-bottom: 1.5rem; }
 .tool__main .lead a { color: var(--ink); }
-.tool__card { background: var(--paper); border: 1px solid #e4e6ea; border-radius: 16px; padding: 1.3rem; }
-.tool__card .field textarea { background: var(--ivory); width: 100%; font: 400 .95rem/1.5 var(--sans); color: var(--ink); padding: .7rem .85rem; border: 1px solid #d9dbe1; border-radius: 10px; }
+.tool__card { background: var(--paper); border: 1px solid var(--line); border-radius: 16px; padding: 1.3rem; }
+.tool__card .field textarea { background: var(--ivory); width: 100%; font: 400 .95rem/1.5 var(--sans); color: var(--ink); padding: .7rem .85rem; border: 1px solid var(--line-strong); border-radius: 10px; }
 .tool__hint { font-size: .82rem; color: var(--ink-soft); margin: -.5rem 0 1rem; }
 .tool__hint code { font-size: .8rem; background: var(--ivory); padding: 0 .3rem; border-radius: 4px; }
 .tool__details summary { cursor: pointer; font-size: .9rem; margin-bottom: 1rem; }
 .tool__bar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin: 1.5rem 0 .8rem; }
 .tool__bar .tool__hint { margin: 0; }
 .tool__list { list-style: none; display: grid; gap: .7rem; }
-.tool__item { background: var(--paper); border: 1px solid #e4e6ea; border-radius: 14px; padding: .9rem 1rem; }
+.tool__item { background: var(--paper); border: 1px solid var(--line); border-radius: 14px; padding: .9rem 1rem; }
 .tool__head { display: flex; align-items: baseline; gap: .6rem; flex-wrap: wrap; margin-bottom: .45rem; }
 .tool__head strong { font-weight: 500; }
 .tool__head small { color: var(--ink-soft); }
-.tool__link { width: 100%; font: 400 .82rem var(--sans); color: var(--ink-soft); padding: .5rem .7rem; border: 1px solid #e4e6ea; border-radius: 8px; background: var(--ivory); margin-bottom: .6rem; }
+.tool__link { width: 100%; font: 400 .82rem var(--sans); color: var(--ink-soft); padding: .5rem .7rem; border: 1px solid var(--line); border-radius: 8px; background: var(--ivory); margin-bottom: .6rem; }
 .tool__actions { display: flex; flex-wrap: wrap; gap: .45rem; }
 .tool__actions .btn { padding: .6rem 1rem; font-size: .8rem; }
 .tool__privacy { margin-top: 2rem; text-align: center; }
 .btn:disabled { opacity: .5; cursor: not-allowed; }
+
+/* =====================================================================
+   TEMA: Kuning Banjar — kuning kebesaran Kesultanan Banjar, diredam
+   menjadi emas antik agar tetap elegan (tidak mencolok).
+   Aktif bila undangan.config.mjs berisi  tema: "kuning-banjar"
+   ===================================================================== */
+[data-tema="kuning-banjar"] {
+  --ink: #3b2e14;          /* cokelat tua */
+  --ink-rgb: 59,46,20;
+  --ink-soft: #7a6643;
+  --ink-hover: #2a200c;
+  --heading: #8a6a1c;      /* emas tua untuk judul */
+  --silver: #d3b766;       /* garis & ornamen keemasan */
+  --sage: #f2e6c2;         /* lencana lembut */
+  --accent: #b8912a;       /* emas antik */
+  --ivory: #fbf7eb;        /* krem hangat */
+  --paper: #fffdf7;
+  --soft-end: #f4ead0;
+  --line: #ece2c8;
+  --line-strong: #e2d3ac;
+  --overlay: 36,26,8;      /* lapisan gelap kecokelatan di atas foto */
+}
+/* Sentuhan emas di atas foto: label kecil & angka hitung mundur */
+[data-tema="kuning-banjar"] .cover .eyebrow,
+[data-tema="kuning-banjar"] .hero .eyebrow,
+[data-tema="kuning-banjar"] .side .eyebrow,
+[data-tema="kuning-banjar"] .countdown-card .eyebrow,
+[data-tema="kuning-banjar"] .closing__label { color: #e8cd7e; opacity: 1; }
+[data-tema="kuning-banjar"] .countdown div { background: rgba(255,251,240,.94); }
+[data-tema="kuning-banjar"] .countdown span { color: var(--heading); }
+[data-tema="kuning-banjar"] .countdown-card { border-color: rgba(232,205,126,.45); }

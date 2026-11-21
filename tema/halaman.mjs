@@ -70,7 +70,7 @@ export function renderHalaman(c) {
   <title>Undangan Pernikahan ${judul}</title>
   <meta name="description" content="Undangan pernikahan ${judul} — ${esc(tanggalUtama)}.">
   <meta name="robots" content="noindex">
-  <meta name="theme-color" content="#3b3d48">
+  <meta name="theme-color" content="${c.tema === "kuning-banjar" ? "#3b2e14" : "#3b3d48"}">
   <meta property="og:type" content="website">
   <meta property="og:title" content="${esc(c.pratinjau?.judul || "Pernikahan")} ${judul}">
   <meta property="og:description" content="${esc(tanggalUtama)} · ${esc([lokasiUtama.tempat, ...(lokasiUtama.alamat || [])].join(", "))}">
@@ -82,7 +82,7 @@ export function renderHalaman(c) {
   <link rel="stylesheet" href="assets/style.css">
   <script id="undangan-config" type="application/json">${JSON.stringify(runtime).replace(/</g, "\\u003c")}</script>
 </head>
-<body class="locked">
+<body class="locked"${c.tema ? ` data-tema="${esc(c.tema)}"` : ""}>
 
   <!-- ============ SAMPUL ============ -->
   <div id="cover" class="cover"${bg(c.sampul?.foto)}>
